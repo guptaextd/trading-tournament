@@ -171,6 +171,115 @@
   ],
   "competitions": [
     {
+      "id": "comp-1788727082212",
+      "title": "Global Quant Algorithmic Cup",
+      "slug": "global-quant-algorithmic-cup-2212",
+      "platform_id": "plt-ibkr",
+      "description": "Community submitted trading tournament.",
+      "prize_pool": 500000,
+      "currency": "USD",
+      "market_type": "stocks",
+      "entry_fee": null,
+      "entry_requirements": "Check official site for requirements.",
+      "start_date": "2026-09-06T05:30:03.816Z",
+      "end_date": "2026-10-06T05:30:03.817Z",
+      "country_eligibility": [
+        "Global"
+      ],
+      "format": "online",
+      "team_type": "solo",
+      "official_url": "https://interactivebrokers.com/quant-cup",
+      "featured": false,
+      "legitimacy_score": 88,
+      "evaluation_metric": "Highest Net PnL %",
+      "rules_summary": [
+        "Official competition rules apply upon registration."
+      ],
+      "prize_breakdown": [
+        {
+          "rank": "1st Place",
+          "reward": "500000 USD"
+        }
+      ],
+      "is_beginner_friendly": false,
+      "participant_count": 100,
+      "created_at": "2026-09-06T20:38:02.212Z"
+    },
+    {
+      "id": "comp-1788727079265",
+      "title": "Solana Ecosystem Futures Derby",
+      "slug": "solana-ecosystem-futures-derby-9265",
+      "platform_id": "plt-bybit",
+      "description": "Trade SOL and Solana-based perpetuals for a 150,000 USDT prize pool.",
+      "prize_pool": 150000,
+      "currency": "USDT",
+      "market_type": "crypto",
+      "entry_fee": null,
+      "entry_requirements": "Min 100 USDT balance.",
+      "start_date": "2026-09-22T00:00:00Z",
+      "end_date": "2026-10-05T23:59:59Z",
+      "country_eligibility": [
+        "Global"
+      ],
+      "format": "online",
+      "team_type": "solo",
+      "official_url": "https://www.bybit.com/sol-derby",
+      "featured": false,
+      "legitimacy_score": 88,
+      "evaluation_metric": "SOL Pairs ROI %",
+      "rules_summary": [
+        "Official competition rules apply upon registration."
+      ],
+      "prize_breakdown": [
+        {
+          "rank": "1st Place",
+          "reward": "150000 USDT"
+        }
+      ],
+      "is_beginner_friendly": false,
+      "participant_count": 100,
+      "created_at": "2026-09-06T20:37:59.265Z"
+    },
+    {
+      "id": "comp-1788727077816",
+      "title": "Apex Micro-Futures Blitz (October)",
+      "slug": "apex-micro-futures-blitz-october--7816",
+      "platform_id": "plt-apextrader",
+      "description": "Micro-contracts only fast scalping tournament with $250k prize pool.",
+      "prize_pool": 250000,
+      "currency": "USD",
+      "market_type": "futures",
+      "entry_fee": 30,
+      "entry_requirements": "Valid Apex tournament account.",
+      "start_date": "2026-10-10T13:30:00Z",
+      "end_date": "2026-10-25T20:00:00Z",
+      "country_eligibility": [
+        "Global",
+        "USA",
+        "UK",
+        "EU",
+        "India"
+      ],
+      "format": "online",
+      "team_type": "solo",
+      "official_url": "https://apextraderfunding.com/micro-blitz",
+      "featured": false,
+      "legitimacy_score": 88,
+      "evaluation_metric": "Highest Micro Futures PnL",
+      "rules_summary": [
+        "Official competition rules apply upon registration."
+      ],
+      "prize_breakdown": [
+        {
+          "rank": "1st Place",
+          "reward": "250000 USD"
+        }
+      ],
+      "is_beginner_friendly": false,
+      "participant_count": 100,
+      "created_at": "2026-09-06T20:37:57.816Z"
+    },
+    {
       "id": "comp-1788671724590",
       "title": "Apex Futures Blitz Championship",
       "slug": "apex-futures-blitz-championship-4590",
@@ -1201,7 +1310,7 @@
       },
       "ai_quality_note": "QUALITY_SCORE: [5/5]\nFLAGS: [none]\nNOTE: [Clean listing from recognized platform with transparent rules and realistic prize structure.]",
       "id": "sub-1788672603829",
-      "status": "pending",
+      "status": "approved",
       "submitted_at": "2026-09-06T05:30:03.829Z"
     },
     {
@@ -1259,7 +1368,7 @@
         "official_url": "https://apextraderfunding.com/micro-blitz",
         "evaluation_metric": "Highest Micro Futures PnL"
       },
-      "status": "pending",
+      "status": "approved",
       "submitted_at": "2026-09-05T14:30:00Z"
     },
     {
@@ -1287,7 +1396,7 @@
         "official_url": "https://www.bybit.com/sol-derby",
         "evaluation_metric": "SOL Pairs ROI %"
       },
-      "status": "pending",
+      "status": "approved",
       "submitted_at": "2026-09-06T08:15:00Z"
     }
   ],
