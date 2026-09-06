@@ -1,0 +1,1453 @@
+{
+  "platforms": [
+    {
+      "id": "plt-binance",
+      "name": "Binance",
+      "slug": "binance",
+      "logo_url": "https://images.unsplash.com/photo-1622979135225-d2ba269bc1df?w=128&auto=format&fit=crop&q=80",
+      "website_url": "https://www.binance.com",
+      "type": "exchange",
+      "verified": true,
+      "years_active": 8,
+      "regulation_status": "Multi-jurisdictional (Dubai VARA, France AMF, Italy OAM)",
+      "headquarters": "Global / UAE",
+      "trust_score": 98,
+      "description": "The world’s largest cryptocurrency exchange by trading volume, famous for its annual Futures Grand Prix tournaments with multi-million dollar prize pools."
+    },
+    {
+      "id": "plt-bybit",
+      "name": "Bybit",
+      "slug": "bybit",
+      "logo_url": "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?w=128&auto=format&fit=crop&q=80",
+      "website_url": "https://www.bybit.com",
+      "type": "exchange",
+      "verified": true,
+      "years_active": 7,
+      "regulation_status": "Regulated (Dubai VARA, Cyprus CySEC)",
+      "headquarters": "Dubai, UAE",
+      "trust_score": 96,
+      "description": "Pioneers of the iconic World Series of Trading (WSOT), hosting team and individual crypto derivatives tournaments with up to $10,000,000 in prizes."
+    },
+    {
+      "id": "plt-ftmo",
+      "name": "FTMO",
+      "slug": "ftmo",
+      "logo_url": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=128&auto=format&fit=crop&q=80",
+      "website_url": "https://ftmo.com",
+      "type": "prop_firm",
+      "verified": true,
+      "years_active": 10,
+      "regulation_status": "EU Corporate Governance (Czech Republic Regulated Entity)",
+      "headquarters": "Prague, Czech Republic",
+      "trust_score": 97,
+      "description": "The global benchmark for modern prop trading firms, hosting regular free monthly challenges with funded trading accounts as top prizes."
+    },
+    {
+      "id": "plt-icmarkets",
+      "name": "IC Markets",
+      "slug": "ic-markets",
+      "logo_url": "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=128&auto=format&fit=crop&q=80",
+      "website_url": "https://www.icmarkets.com",
+      "type": "broker",
+      "verified": true,
+      "years_active": 17,
+      "regulation_status": "Tier-1 Regulated (ASIC, CySEC, FSA)",
+      "headquarters": "Sydney, Australia",
+      "trust_score": 99,
+      "description": "One of the largest True ECN forex and CFD brokers globally, renowned for institutional-grade liquidity and low-latency trading cups."
+    },
+    {
+      "id": "plt-fundednext",
+      "name": "FundedNext",
+      "slug": "fundednext",
+      "logo_url": "https://images.unsplash.com/photo-1642790106117-e829e14a795f?w=128&auto=format&fit=crop&q=80",
+      "website_url": "https://fundednext.com",
+      "type": "prop_firm",
+      "verified": true,
+      "years_active": 4,
+      "regulation_status": "Verified Commercial License (UAE Free Zone)",
+      "headquarters": "Dubai, UAE",
+      "trust_score": 91,
+      "description": "Rapidly growing prop firm featuring free competition ladders with cash prizes and immediate funded account allocations."
+    },
+    {
+      "id": "plt-apextrader",
+      "name": "Apex Trader Funding",
+      "slug": "apex-trader-funding",
+      "logo_url": "https://images.unsplash.com/photo-1618042164219-62c820f10723?w=128&auto=format&fit=crop&q=80",
+      "website_url": "https://apextraderfunding.com",
+      "type": "prop_firm",
+      "verified": true,
+      "years_active": 5,
+      "regulation_status": "US Registered Entity (Texas, USA)",
+      "headquarters": "Texas, USA",
+      "trust_score": 93,
+      "description": "Leading US futures prop firm hosting regular evaluations and competitive showdowns across CME, CBOT, NYMEX, and COMEX contracts."
+    },
+    {
+      "id": "plt-okx",
+      "name": "OKX",
+      "slug": "okx",
+      "logo_url": "https://images.unsplash.com/photo-1622979135240-caa6648190b6?w=128&auto=format&fit=crop&q=80",
+      "website_url": "https://www.okx.com",
+      "type": "exchange",
+      "verified": true,
+      "years_active": 8,
+      "regulation_status": "Licensed (Dubai VARA, Bahamas SCB)",
+      "headquarters": "Seychelles / Dubai",
+      "trust_score": 95,
+      "description": "Global crypto exchange and Web3 technology pioneer hosting recurring Nitro and McLaren Racing-sponsored trading tournaments."
+    },
+    {
+      "id": "plt-bitget",
+      "name": "Bitget",
+      "slug": "bitget",
+      "logo_url": "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=128&auto=format&fit=crop&q=80",
+      "website_url": "https://www.bitget.com",
+      "type": "exchange",
+      "verified": true,
+      "years_active": 7,
+      "regulation_status": "Registered VASP (Poland, Lithuania, Italy)",
+      "headquarters": "Seychelles",
+      "trust_score": 92,
+      "description": "Leading copy trading and derivatives exchange hosting King’s Cup Global Invitational (KCGI) with multi-asset categories."
+    },
+    {
+      "id": "plt-exness",
+      "name": "Exness",
+      "slug": "exness",
+      "logo_url": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=128&auto=format&fit=crop&q=80",
+      "website_url": "https://www.exness.com",
+      "type": "broker",
+      "verified": true,
+      "years_active": 16,
+      "regulation_status": "Tier-1 Regulated (FCA UK, CySEC, FSCA)",
+      "headquarters": "Limassol, Cyprus",
+      "trust_score": 98,
+      "description": "Multi-asset broker handling over $4 Trillion in monthly volume, known for instant withdrawals and high-frequency trading challenges."
+    },
+    {
+      "id": "plt-tradingview",
+      "name": "TradingView",
+      "slug": "tradingview",
+      "logo_url": "https://images.unsplash.com/photo-1642543492481-44e81e3914a7?w=128&auto=format&fit=crop&q=80",
+      "website_url": "https://www.tradingview.com",
+      "type": "championship",
+      "verified": true,
+      "years_active": 13,
+      "regulation_status": "Self-Certified Simulated Engine",
+      "headquarters": "London, UK / New York, USA",
+      "trust_score": 99,
+      "description": "The world’s premier charting platform hosting risk-free paper trading competitions with real-time global market data."
+    },
+    {
+      "id": "plt-ibkr",
+      "name": "Interactive Brokers",
+      "slug": "interactive-brokers",
+      "logo_url": "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=128&auto=format&fit=crop&q=80",
+      "website_url": "https://www.interactivebrokers.com",
+      "type": "broker",
+      "verified": true,
+      "years_active": 46,
+      "regulation_status": "Tier-1 Supreme (SEC, FINRA, FCA, ASIC, SFC)",
+      "headquarters": "Connecticut, USA",
+      "trust_score": 100,
+      "description": "Publicly traded global broker (NASDAQ: IBKR) powering institutional collegiate and professional algorithmic trading tournaments."
+    },
+    {
+      "id": "plt-deriv",
+      "name": "Deriv",
+      "slug": "deriv",
+      "logo_url": "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?w=128&auto=format&fit=crop&q=80",
+      "website_url": "https://deriv.com",
+      "type": "broker",
+      "verified": true,
+      "years_active": 25,
+      "regulation_status": "Multi-Regulated (MFSA Malta, Labuan FSA, VFSC)",
+      "headquarters": "Cyberjaya, Malaysia / Malta",
+      "trust_score": 94,
+      "description": "Pioneer of digital options and synthetic indices trading, running weekly demo and real account tournaments across Asia, Africa, and LATAM."
+    }
+  ],
+  "competitions": [
+    {
+      "id": "comp-1788671724590",
+      "title": "Apex Futures Blitz Championship",
+      "slug": "apex-futures-blitz-championship-4590",
+      "platform_id": "plt-apextrader",
+      "description": "End-to-end verified tournament test.",
+      "prize_pool": 300000,
+      "currency": "USD",
+      "market_type": "futures",
+      "entry_fee": 50,
+      "entry_requirements": "Check official site for requirements.",
+      "start_date": "2026-09-06T05:15:24.528Z",
+      "end_date": "2026-09-16T05:15:24.530Z",
+      "country_eligibility": [
+        "Global"
+      ],
+      "format": "online",
+      "team_type": "solo",
+      "official_url": "https://apextraderfunding.com/blitz",
+      "featured": false,
+      "legitimacy_score": 88,
+      "evaluation_metric": "Highest Net PnL %",
+      "rules_summary": [
+        "Official competition rules apply upon registration."
+      ],
+      "prize_breakdown": [
+        {
+          "rank": "1st Place",
+          "reward": "300000 USD"
+        }
+      ],
+      "is_beginner_friendly": false,
+      "participant_count": 100,
+      "created_at": "2026-09-06T05:15:24.590Z"
+    },
+    {
+      "id": "comp-wsot-2026",
+      "title": "Bybit WSOT 2026 (World Series of Trading)",
+      "slug": "bybit-wsot-2026",
+      "platform_id": "plt-bybit",
+      "description": "The flagship crypto tournament of the year. Compete individually or assemble a 10+ trader squad to battle for a record-shattering $10,000,000 USDT prize pool + Rolex Submariners and luxury yacht trips.",
+      "prize_pool": 10000000,
+      "currency": "USDT",
+      "market_type": "crypto",
+      "entry_fee": null,
+      "entry_requirements": "Minimum wallet net asset value of 500 USDT at time of registration. Derivatives trading account activated.",
+      "start_date": "2026-08-20T00:00:00Z",
+      "end_date": "2026-09-28T23:59:59Z",
+      "country_eligibility": [
+        "Global",
+        "India",
+        "UAE",
+        "Germany",
+        "Japan",
+        "Brazil",
+        "Vietnam",
+        "Turkey"
+      ],
+      "format": "online",
+      "team_type": "both",
+      "official_url": "https://www.bybit.com/wsot2026",
+      "featured": true,
+      "legitimacy_score": 98,
+      "evaluation_metric": "Highest Team PnL % (50%) & Individual Profit Volume (50%)",
+      "rules_summary": [
+        "Minimum derivatives trading volume requirement of $50,000 during the competition window.",
+        "API trading and manual trading are both permitted in dedicated divisions.",
+        "Hedging across sub-accounts or wash trading will result in instantaneous disqualification.",
+        "Team leaders receive a guaranteed 20% bonus cut from their team’s prize pot."
+      ],
+      "prize_breakdown": [
+        {
+          "rank": "Squad 1st Place",
+          "reward": "2,400,000 USDT",
+          "value": 2400000
+        },
+        {
+          "rank": "Squad 2nd Place",
+          "reward": "1,200,000 USDT",
+          "value": 1200000
+        },
+        {
+          "rank": "Squad 3rd Place",
+          "reward": "750,000 USDT",
+          "value": 750000
+        },
+        {
+          "rank": "Solo PnL Champion",
+          "reward": "1,000,000 USDT + Rolex Submariner",
+          "value": 1000000
+        },
+        {
+          "rank": "Top 4-10 Teams",
+          "reward": "1,800,000 USDT Shared",
+          "value": 1800000
+        },
+        {
+          "rank": "Lucky Draw & Merch",
+          "reward": "850,000 USDT in Tech Gifts & Trial Funds",
+          "value": 850000
+        }
+      ],
+      "is_beginner_friendly": false,
+      "participant_count": 84210,
+      "created_at": "2026-07-01T10:00:00Z"
+    },
+    {
+      "id": "comp-binance-futures-grand-prix",
+      "title": "Binance Futures Grand Prix: Autumn Nitro Cup",
+      "slug": "binance-futures-grand-prix",
+      "platform_id": "plt-binance",
+      "description": "Sprint for crypto dominance on Binance USD-M and COIN-M Futures. Features daily lucky spin jackpots, ROI multipliers, and team battle royale divisions.",
+      "prize_pool": 3500000,
+      "currency": "USDT",
+      "market_type": "futures",
+      "entry_fee": null,
+      "entry_requirements": "Futures account with balance equivalent to 200 USDT. KYC Level 2 verified.",
+      "start_date": "2026-09-01T08:00:00Z",
+      "end_date": "2026-09-25T23:59:59Z",
+      "country_eligibility": [
+        "Global",
+        "India",
+        "France",
+        "Poland",
+        "Mexico",
+        "South Africa",
+        "Thailand"
+      ],
+      "format": "online",
+      "team_type": "both",
+      "official_url": "https://www.binance.com/en/futures-grand-prix",
+      "featured": true,
+      "legitimacy_score": 99,
+      "evaluation_metric": "Daily ROI % + Aggregate Futures Volume Points",
+      "rules_summary": [
+        "Trade any eligible USD-M or COIN-M perpetual contracts.",
+        "Daily rankings reset every 00:00 UTC with daily payout allocations.",
+        "No bot restrictions; copy trading master traders participate in separate tier.",
+        "Max leverage capped at 50x for tournament contracts."
+      ],
+      "prize_breakdown": [
+        {
+          "rank": "1st Place Team",
+          "reward": "800,000 USDT",
+          "value": 800000
+        },
+        {
+          "rank": "1st Place Individual",
+          "reward": "500,000 USDT + VIP 9 Upgrade",
+          "value": 500000
+        },
+        {
+          "rank": "2nd Place Individual",
+          "reward": "250,000 USDT",
+          "value": 250000
+        },
+        {
+          "rank": "3rd Place Individual",
+          "reward": "120,000 USDT",
+          "value": 120000
+        },
+        {
+          "rank": "Daily Sprint Winners",
+          "reward": "40,000 USDT Daily Pool",
+          "value": 960000
+        }
+      ],
+      "is_beginner_friendly": false,
+      "participant_count": 51200,
+      "created_at": "2026-08-10T12:00:00Z"
+    },
+    {
+      "id": "comp-ftmo-monthly-september",
+      "title": "FTMO Free Monthly Challenge: September Showdown",
+      "slug": "ftmo-monthly-september",
+      "platform_id": "plt-ftmo",
+      "description": "100% Free risk-free trial tournament using FTMO demo accounts. Prove your edge without risking capital and win up to $400,000 in free Evaluation Accounts + cash vouchers.",
+      "prize_pool": 150000,
+      "currency": "USD",
+      "market_type": "demo",
+      "entry_fee": 0,
+      "entry_requirements": "Free registration via FTMO client portal. 1 account per IP/trader.",
+      "start_date": "2026-09-01T00:00:00Z",
+      "end_date": "2026-09-30T23:59:59Z",
+      "country_eligibility": [
+        "Global",
+        "India",
+        "UK",
+        "EU",
+        "Australia",
+        "Canada",
+        "Singapore",
+        "UAE"
+      ],
+      "format": "online",
+      "team_type": "solo",
+      "official_url": "https://ftmo.com/en/free-challenge",
+      "featured": true,
+      "legitimacy_score": 97,
+      "evaluation_metric": "Highest Account Balance with strict FTMO Risk Rules (<5% daily DD, <10% max DD)",
+      "rules_summary": [
+        "Starting demo balance: $100,000 fictitious capital on MetaTrader 5 or cTrader.",
+        "Daily loss limit: maximum $5,000 drop in equity per trading day.",
+        "Max overall drawdown: cannot breach $10,000 at any point.",
+        "Minimum active trading days: 5 trading days during the month."
+      ],
+      "prize_breakdown": [
+        {
+          "rank": "1st Place",
+          "reward": "$200,000 FTMO Account + $3,000 Cash",
+          "value": 25000
+        },
+        {
+          "rank": "2nd Place",
+          "reward": "$100,000 FTMO Account + $1,500 Cash",
+          "value": 15000
+        },
+        {
+          "rank": "3rd Place",
+          "reward": "$50,000 FTMO Account + $1,000 Cash",
+          "value": 10000
+        },
+        {
+          "rank": "4th - 10th Place",
+          "reward": "$25,000 FTMO Accounts",
+          "value": 17500
+        },
+        {
+          "rank": "11th - 50th Place",
+          "reward": "Free FTMO Challenge Voucher (worth $250)",
+          "value": 10000
+        }
+      ],
+      "is_beginner_friendly": true,
+      "participant_count": 24800,
+      "created_at": "2026-08-15T09:00:00Z"
+    },
+    {
+      "id": "comp-icmarkets-global-cup",
+      "title": "IC Markets Global Forex Derby 2026",
+      "slug": "icmarkets-global-forex-derby",
+      "platform_id": "plt-icmarkets",
+      "description": "Ultra-low spread institutional Forex trading clash. Trade major FX pairs, metals, and indices with sub-millisecond execution on cTrader and MT4/MT5.",
+      "prize_pool": 500000,
+      "currency": "USD",
+      "market_type": "forex",
+      "entry_fee": null,
+      "entry_requirements": "Live Raw Spread trading account with at least $1,000 initial equity deposit.",
+      "start_date": "2026-08-15T00:00:00Z",
+      "end_date": "2026-09-18T23:59:59Z",
+      "country_eligibility": [
+        "Global",
+        "Australia",
+        "UK",
+        "EU",
+        "India",
+        "South Africa",
+        "Malaysia",
+        "UAE"
+      ],
+      "format": "online",
+      "team_type": "solo",
+      "official_url": "https://www.icmarkets.com/global-derby",
+      "featured": false,
+      "legitimacy_score": 99,
+      "evaluation_metric": "Highest Net Profit / Relative Equity Drawdown Ratio (Sharpe Adjusted)",
+      "rules_summary": [
+        "Minimum closed lot size requirement: 25 standard lots throughout tournament period.",
+        "Only Forex currency pairs and Spot Gold/Silver (XAUUSD/XAGUSD) qualify.",
+        "Scalping, EA trading, and grid strategies allowed.",
+        "Payouts directly transferred to verified trading balance with immediate withdrawal availability."
+      ],
+      "prize_breakdown": [
+        {
+          "rank": "Grand Champion",
+          "reward": "$150,000 Cash Transfer",
+          "value": 150000
+        },
+        {
+          "rank": "Runner Up (2nd)",
+          "reward": "$80,000 Cash Transfer",
+          "value": 80000
+        },
+        {
+          "rank": "3rd Place",
+          "reward": "$45,000 Cash Transfer",
+          "value": 45000
+        },
+        {
+          "rank": "4th - 10th Place",
+          "reward": "$15,000 Each",
+          "value": 105000
+        },
+        {
+          "rank": "11th - 25th Place",
+          "reward": "$4,000 Each",
+          "value": 60000
+        }
+      ],
+      "is_beginner_friendly": false,
+      "participant_count": 14500,
+      "created_at": "2026-07-20T10:00:00Z"
+    },
+    {
+      "id": "comp-apex-futures-super-league",
+      "title": "Apex Trader 100K Super League: Futures Combat",
+      "slug": "apex-futures-super-league",
+      "platform_id": "plt-apextrader",
+      "description": "High-frequency futures trading tournament on CME/CBOT/NYMEX. Test your intraday edge on NQ, ES, CL, and GC futures with zero overnight risk.",
+      "prize_pool": 750000,
+      "currency": "USD",
+      "market_type": "futures",
+      "entry_fee": 45,
+      "entry_requirements": "Tournament ticket ($45 registration). Comes with a fresh simulated $100,000 Rithmic/Tradovate account.",
+      "start_date": "2026-09-10T13:30:00Z",
+      "end_date": "2026-10-05T20:00:00Z",
+      "country_eligibility": [
+        "Global",
+        "USA",
+        "Canada",
+        "UK",
+        "EU",
+        "India",
+        "Australia",
+        "Japan"
+      ],
+      "format": "online",
+      "team_type": "solo",
+      "official_url": "https://apextraderfunding.com/super-league",
+      "featured": true,
+      "legitimacy_score": 93,
+      "evaluation_metric": "Absolute Net Closed PnL under Trailing Drawdown Constraints",
+      "rules_summary": [
+        "Max intraday contracts: 10 Minis or 100 Micros at any given moment.",
+        "Trailing threshold of $3,000 trailing intraday high-water mark.",
+        "All positions must be closed before 4:59 PM US Eastern Time daily.",
+        "Top 100 finishers win free PA (Paid Performance) accounts with zero activation fees."
+      ],
+      "prize_breakdown": [
+        {
+          "rank": "1st Place Champion",
+          "reward": "$200,000 Cash + 20x $300k Funded Accounts",
+          "value": 250000
+        },
+        {
+          "rank": "2nd Place",
+          "reward": "$100,000 Cash + 10x $300k Funded Accounts",
+          "value": 125000
+        },
+        {
+          "rank": "3rd Place",
+          "reward": "$50,000 Cash + 5x $300k Funded Accounts",
+          "value": 65000
+        },
+        {
+          "rank": "4th - 20th Place",
+          "reward": "$10,000 Cash + Funded Accounts",
+          "value": 200000
+        }
+      ],
+      "is_beginner_friendly": false,
+      "participant_count": 18900,
+      "created_at": "2026-08-25T14:00:00Z"
+    },
+    {
+      "id": "comp-tradingview-paper-cup",
+      "title": "TradingView Zero-Risk Global Paper Cup",
+      "slug": "tradingview-paper-cup",
+      "platform_id": "plt-tradingview",
+      "description": "The ultimate zero-risk paper trading battleground. Open to every trader globally on TradingView Paper Trading across global stocks, crypto, indices, and commodities.",
+      "prize_pool": 100000,
+      "currency": "USD",
+      "market_type": "demo",
+      "entry_fee": 0,
+      "entry_requirements": "Free TradingView account (Basic, Essential, Plus, or Premium).",
+      "start_date": "2026-09-05T00:00:00Z",
+      "end_date": "2026-09-26T23:59:59Z",
+      "country_eligibility": [
+        "Global",
+        "All Countries"
+      ],
+      "format": "online",
+      "team_type": "solo",
+      "official_url": "https://www.tradingview.com/tournaments/paper-cup",
+      "featured": true,
+      "legitimacy_score": 99,
+      "evaluation_metric": "Highest ROI % on $250,000 starting simulated portfolio",
+      "rules_summary": [
+        "Starting paper capital: $250,000 USD simulated funds.",
+        "Maximum 20% allocation in any single instrument to enforce prudent risk management.",
+        "Minimum of 15 completed trades during the tournament window.",
+        "Public trade log visible on trader profile to guarantee anti-manipulation transparency."
+      ],
+      "prize_breakdown": [
+        {
+          "rank": "1st Place",
+          "reward": "$30,000 Cash + Lifetime Premium TradingView Sub",
+          "value": 35000
+        },
+        {
+          "rank": "2nd Place",
+          "reward": "$15,000 Cash + 5 Years Premium Sub",
+          "value": 18000
+        },
+        {
+          "rank": "3rd Place",
+          "reward": "$10,000 Cash + 3 Years Premium Sub",
+          "value": 12000
+        },
+        {
+          "rank": "4th - 50th Place",
+          "reward": "$1,000 Cash + 1 Year TradingView Plus",
+          "value": 46000
+        }
+      ],
+      "is_beginner_friendly": true,
+      "participant_count": 67000,
+      "created_at": "2026-08-28T11:00:00Z"
+    },
+    {
+      "id": "comp-okx-nitro-traders",
+      "title": "OKX Nitro Traders Cup: Speed & Precision",
+      "slug": "okx-nitro-traders-cup",
+      "platform_id": "plt-okx",
+      "description": "High-octane crypto futures championship partnered with McLaren Formula 1 team. Features VIP pit passes to Abu Dhabi Grand Prix for the top 3 PnL performers.",
+      "prize_pool": 2000000,
+      "currency": "USDT",
+      "market_type": "crypto",
+      "entry_fee": null,
+      "entry_requirements": "Minimum 100 USDT account balance in OKX Trading Account.",
+      "start_date": "2026-09-12T00:00:00Z",
+      "end_date": "2026-10-08T23:59:59Z",
+      "country_eligibility": [
+        "Global",
+        "India",
+        "Germany",
+        "UAE",
+        "Singapore",
+        "South Korea",
+        "Argentina"
+      ],
+      "format": "online",
+      "team_type": "solo",
+      "official_url": "https://www.okx.com/campaigns/nitro-cup",
+      "featured": false,
+      "legitimacy_score": 95,
+      "evaluation_metric": "PnL % (Weight 70%) + Volume Tiers (Weight 30%)",
+      "rules_summary": [
+        "Trade BTC, ETH, SOL, and top 20 perpetual swap contracts.",
+        "Top 3 winners receive all-inclusive VIP hospitality passes to Abu Dhabi Grand Prix.",
+        "Sub-account volume aggregation is strictly banned."
+      ],
+      "prize_breakdown": [
+        {
+          "rank": "1st Place",
+          "reward": "500,000 USDT + F1 VIP Paddock Pass",
+          "value": 520000
+        },
+        {
+          "rank": "2nd Place",
+          "reward": "250,000 USDT + F1 VIP Pass",
+          "value": 260000
+        },
+        {
+          "rank": "3rd Place",
+          "reward": "150,000 USDT + F1 VIP Pass",
+          "value": 160000
+        },
+        {
+          "rank": "4th - 20th Place",
+          "reward": "50,000 USDT Each",
+          "value": 850000
+        }
+      ],
+      "is_beginner_friendly": false,
+      "participant_count": 32000,
+      "created_at": "2026-08-30T10:00:00Z"
+    },
+    {
+      "id": "comp-bitget-kcgi-2026",
+      "title": "Bitget Kings Cup Global Invitational (KCGI)",
+      "slug": "bitget-kcgi-2026",
+      "platform_id": "plt-bitget",
+      "description": "One of the premier annual crypto tournaments spanning copy trading, spot battles, and futures team clashes. Features a customizable team jersey and helicopter prize draw.",
+      "prize_pool": 5000000,
+      "currency": "USDT",
+      "market_type": "copy_trading",
+      "entry_fee": null,
+      "entry_requirements": "Must hold at least 300 USDT or 500 BGB in Bitget balance.",
+      "start_date": "2026-09-15T04:00:00Z",
+      "end_date": "2026-10-15T23:59:59Z",
+      "country_eligibility": [
+        "Global",
+        "India",
+        "Japan",
+        "Brazil",
+        "Vietnam",
+        "Turkey",
+        "Nigeria"
+      ],
+      "format": "online",
+      "team_type": "both",
+      "official_url": "https://www.bitget.com/kcgi/2026",
+      "featured": true,
+      "legitimacy_score": 92,
+      "evaluation_metric": "Copy Trading Copier PnL & Master Trader Followers Profit",
+      "rules_summary": [
+        "Split into 4 stages: Demo Stage, Team Battle, Copy Trading Clash, Spot Arena.",
+        "Copy Trading division measures total profits delivered to followers.",
+        "Daily prize wheel for trading volume above $10,000."
+      ],
+      "prize_breakdown": [
+        {
+          "rank": "Team Division 1st",
+          "reward": "1,500,000 USDT",
+          "value": 1500000
+        },
+        {
+          "rank": "Copy Trading Master 1st",
+          "reward": "600,000 USDT",
+          "value": 600000
+        },
+        {
+          "rank": "Individual Futures Champion",
+          "reward": "400,000 USDT + Tesla Model S",
+          "value": 490000
+        },
+        {
+          "rank": "Runner Up Teams",
+          "reward": "1,200,000 USDT Shared",
+          "value": 1200000
+        }
+      ],
+      "is_beginner_friendly": false,
+      "participant_count": 42150,
+      "created_at": "2026-08-25T16:00:00Z"
+    },
+    {
+      "id": "comp-fundednext-stellar-arena",
+      "title": "FundedNext Stellar Arena Cup #4",
+      "slug": "fundednext-stellar-arena-4",
+      "platform_id": "plt-fundednext",
+      "description": "Monthly competitive ladder for aspiring prop traders. Free entry with cash rewards and real funded accounts awarded to the top 100 participants.",
+      "prize_pool": 120000,
+      "currency": "USD",
+      "market_type": "prop_firm",
+      "entry_fee": 0,
+      "entry_requirements": "Free registration via FundedNext platform. MetaTrader 5 demo credential issued automatically.",
+      "start_date": "2026-09-01T00:00:00Z",
+      "end_date": "2026-09-28T23:59:59Z",
+      "country_eligibility": [
+        "Global",
+        "India",
+        "Pakistan",
+        "Nigeria",
+        "South Africa",
+        "UK",
+        "EU",
+        "Philippines"
+      ],
+      "format": "online",
+      "team_type": "solo",
+      "official_url": "https://fundednext.com/stellar-arena",
+      "featured": false,
+      "legitimacy_score": 91,
+      "evaluation_metric": "Highest ROI % without violating 5% daily / 10% overall drawdown limits",
+      "rules_summary": [
+        "Starting balance: $10,000 demo funds.",
+        "Holding trades over weekends permitted in Stellar Model.",
+        "News trading allowed without restrictions.",
+        "Strict 1 account per participant rule."
+      ],
+      "prize_breakdown": [
+        {
+          "rank": "1st Place",
+          "reward": "$10,000 Cash + $300,000 Stellar 2-Step Account",
+          "value": 15000
+        },
+        {
+          "rank": "2nd Place",
+          "reward": "$5,000 Cash + $200,000 Stellar Account",
+          "value": 8000
+        },
+        {
+          "rank": "3rd Place",
+          "reward": "$3,000 Cash + $100,000 Stellar Account",
+          "value": 5000
+        },
+        {
+          "rank": "4th - 10th Place",
+          "reward": "$1,000 Cash + $50,000 Account",
+          "value": 12000
+        },
+        {
+          "rank": "11th - 100th Place",
+          "reward": "$25,000 FundedNext Accounts",
+          "value": 50000
+        }
+      ],
+      "is_beginner_friendly": true,
+      "participant_count": 31000,
+      "created_at": "2026-08-20T08:00:00Z"
+    },
+    {
+      "id": "comp-exness-pro-league",
+      "title": "Exness Premier Pro League: Autumn Sprint",
+      "slug": "exness-pro-league-autumn",
+      "platform_id": "plt-exness",
+      "description": "High-speed currency and gold sprint with unlimited leverage support and zero overnight swap fees. Real cash prizes credited directly to wallet.",
+      "prize_pool": 300000,
+      "currency": "USD",
+      "market_type": "forex",
+      "entry_fee": null,
+      "entry_requirements": "Pro or Raw Spread live account with min $500 balance.",
+      "start_date": "2026-09-08T00:00:00Z",
+      "end_date": "2026-10-02T23:59:59Z",
+      "country_eligibility": [
+        "Global",
+        "India",
+        "Thailand",
+        "Vietnam",
+        "Kenya",
+        "South Africa",
+        "UAE",
+        "Mexico"
+      ],
+      "format": "online",
+      "team_type": "solo",
+      "official_url": "https://www.exness.com/premier-league",
+      "featured": false,
+      "legitimacy_score": 98,
+      "evaluation_metric": "Net Absolute Profit / Starting Balance % Ratio",
+      "rules_summary": [
+        "Unlimited leverage enabled for qualifying accounts.",
+        "Zero withdrawal restrictions on earned trading profits.",
+        "Instant automated leaderboards updated every 60 seconds."
+      ],
+      "prize_breakdown": [
+        {
+          "rank": "1st Place",
+          "reward": "$100,000 Cash",
+          "value": 100000
+        },
+        {
+          "rank": "2nd Place",
+          "reward": "$50,000 Cash",
+          "value": 50000
+        },
+        {
+          "rank": "3rd Place",
+          "reward": "$30,000 Cash",
+          "value": 30000
+        },
+        {
+          "rank": "4th - 10th Place",
+          "reward": "$10,000 Cash Each",
+          "value": 70000
+        }
+      ],
+      "is_beginner_friendly": false,
+      "participant_count": 12400,
+      "created_at": "2026-08-27T10:00:00Z"
+    },
+    {
+      "id": "comp-ibkr-collegiate-championship",
+      "title": "Interactive Brokers Global Collegiate Championship",
+      "slug": "ibkr-collegiate-championship",
+      "platform_id": "plt-ibkr",
+      "description": "Academic and professional algorithmic and discretionary stock portfolio tournament. Compete against university quants and portfolio managers globally on Trader Workstation (TWS).",
+      "prize_pool": 400000,
+      "currency": "USD",
+      "market_type": "stocks",
+      "entry_fee": 0,
+      "entry_requirements": "Enrolled university student or verified alumnus. Paper trading institutional sandbox.",
+      "start_date": "2026-09-20T13:30:00Z",
+      "end_date": "2026-11-20T21:00:00Z",
+      "country_eligibility": [
+        "Global",
+        "USA",
+        "UK",
+        "EU",
+        "India",
+        "Canada",
+        "Singapore",
+        "Australia",
+        "Hong Kong"
+      ],
+      "format": "online",
+      "team_type": "team",
+      "official_url": "https://www.interactivebrokers.com/student-challenge",
+      "featured": false,
+      "legitimacy_score": 100,
+      "evaluation_metric": "Highest Sharpe Ratio & Portfolio Return across S&P 500 and Nasdaq-100 equities",
+      "rules_summary": [
+        "Teams composed of 2 to 4 eligible university students.",
+        "Python/C++ algorithmic execution via IBKR Client Portal Web API permitted.",
+        "Maximum portfolio beta constraint of 1.35 to disincentivize excessive volatility."
+      ],
+      "prize_breakdown": [
+        {
+          "rank": "1st Place Team",
+          "reward": "$100,000 Cash + Wall Street Summer Analyst Interviews",
+          "value": 120000
+        },
+        {
+          "rank": "2nd Place Team",
+          "reward": "$60,000 Cash",
+          "value": 60000
+        },
+        {
+          "rank": "3rd Place Team",
+          "reward": "$40,000 Cash",
+          "value": 40000
+        },
+        {
+          "rank": "4th - 10th Teams",
+          "reward": "$15,000 Cash Each",
+          "value": 105000
+        }
+      ],
+      "is_beginner_friendly": true,
+      "participant_count": 3400,
+      "created_at": "2026-08-15T15:00:00Z"
+    },
+    {
+      "id": "comp-deriv-asian-sprint",
+      "title": "Deriv Asian Options & Synthetics Sprint",
+      "slug": "deriv-asian-sprint",
+      "platform_id": "plt-deriv",
+      "description": "Fast-paced digital options and synthetic index volatility showdown. Trade Crash/Boom and Volatility 75 index with 24/7 market operation.",
+      "prize_pool": 80000,
+      "currency": "USD",
+      "market_type": "options",
+      "entry_fee": null,
+      "entry_requirements": "Real Deriv account with min $50 initial equity.",
+      "start_date": "2026-09-04T00:00:00Z",
+      "end_date": "2026-09-24T23:59:59Z",
+      "country_eligibility": [
+        "Global",
+        "India",
+        "Indonesia",
+        "Malaysia",
+        "Vietnam",
+        "South Africa",
+        "Kenya",
+        "Brazil"
+      ],
+      "format": "online",
+      "team_type": "solo",
+      "official_url": "https://deriv.com/tournaments/asian-sprint",
+      "featured": false,
+      "legitimacy_score": 94,
+      "evaluation_metric": "Consecutive Winning Contracts Count & Net Realized PnL",
+      "rules_summary": [
+        "24/7 weekend trading enabled on synthetic volatility indices.",
+        "Bot trading allowed via DBot XML flow.",
+        "Minimum trade duration: 5 ticks."
+      ],
+      "prize_breakdown": [
+        {
+          "rank": "1st Place",
+          "reward": "$25,000 Cash",
+          "value": 25000
+        },
+        {
+          "rank": "2nd Place",
+          "reward": "$15,000 Cash",
+          "value": 15000
+        },
+        {
+          "rank": "3rd Place",
+          "reward": "$8,000 Cash",
+          "value": 8000
+        },
+        {
+          "rank": "4th - 20th Place",
+          "reward": "$1,500 Cash Each",
+          "value": 25500
+        }
+      ],
+      "is_beginner_friendly": true,
+      "participant_count": 16800,
+      "created_at": "2026-08-22T10:00:00Z"
+    },
+    {
+      "id": "comp-dubai-fintech-offline-clash",
+      "title": "Dubai World Trade Centre: Super Scalper Offline Championship",
+      "slug": "dubai-super-scalper-offline-2026",
+      "platform_id": "plt-bybit",
+      "description": "In-person live LAN trading showdown held during the Dubai Crypto Expo at DWTC. 100 qualified finalists trade head-to-head on stage in soundproof booths.",
+      "prize_pool": 1000000,
+      "currency": "USD",
+      "market_type": "crypto",
+      "entry_fee": null,
+      "entry_requirements": "Invitation only based on top 100 leaderboard rank in the online qualifying rounds.",
+      "start_date": "2026-10-14T09:00:00Z",
+      "end_date": "2026-10-16T18:00:00Z",
+      "country_eligibility": [
+        "Global",
+        "All Qualified Finalists with UAE Visa Entry"
+      ],
+      "format": "offline",
+      "team_type": "solo",
+      "official_url": "https://www.bybit.com/dubai-lan-clash",
+      "featured": true,
+      "legitimacy_score": 97,
+      "evaluation_metric": "Live In-Person 6-Hour Scalping Session Net Return",
+      "rules_summary": [
+        "All trades executed on tournament-provided dual-monitor workstations under live referee supervision.",
+        "No personal electronic devices or external communication permitted in booths.",
+        "Live Twitch and YouTube streaming with commentary."
+      ],
+      "prize_breakdown": [
+        {
+          "rank": "World Champion Trophy",
+          "reward": "$400,000 Cash + Pure Gold Ingot",
+          "value": 450000
+        },
+        {
+          "rank": "2nd Place Finalist",
+          "reward": "$200,000 Cash",
+          "value": 200000
+        },
+        {
+          "rank": "3rd Place Finalist",
+          "reward": "$100,000 Cash",
+          "value": 100000
+        },
+        {
+          "rank": "Top 10 Finalists",
+          "reward": "$25,000 Cash Each",
+          "value": 175000
+        }
+      ],
+      "is_beginner_friendly": false,
+      "participant_count": 100,
+      "created_at": "2026-08-01T12:00:00Z"
+    },
+    {
+      "id": "comp-bybit-summer-sprint-past",
+      "title": "Bybit Summer Apex Sprint 2026 (Ended)",
+      "slug": "bybit-summer-apex-sprint-past",
+      "platform_id": "plt-bybit",
+      "description": "High-speed summer derivatives rally completed with over 45,000 participants and historic win rates.",
+      "prize_pool": 2500000,
+      "currency": "USDT",
+      "market_type": "crypto",
+      "entry_fee": null,
+      "entry_requirements": "Minimum 200 USDT balance.",
+      "start_date": "2026-07-01T00:00:00Z",
+      "end_date": "2026-07-28T23:59:59Z",
+      "country_eligibility": [
+        "Global"
+      ],
+      "format": "online",
+      "team_type": "solo",
+      "official_url": "https://www.bybit.com/past-sprint",
+      "featured": false,
+      "legitimacy_score": 96,
+      "evaluation_metric": "Highest Net PnL %",
+      "rules_summary": [
+        "Standard derivatives rules applied."
+      ],
+      "prize_breakdown": [
+        {
+          "rank": "1st Place",
+          "reward": "600,000 USDT",
+          "value": 600000
+        },
+        {
+          "rank": "2nd Place",
+          "reward": "300,000 USDT",
+          "value": 300000
+        },
+        {
+          "rank": "3rd Place",
+          "reward": "150,000 USDT",
+          "value": 150000
+        }
+      ],
+      "is_beginner_friendly": false,
+      "participant_count": 48900,
+      "created_at": "2026-06-15T10:00:00Z"
+    },
+    {
+      "id": "comp-ftmo-july-challenge-past",
+      "title": "FTMO Summer Pro Challenge 2026 (Ended)",
+      "slug": "ftmo-summer-pro-challenge-past",
+      "platform_id": "plt-ftmo",
+      "description": "Completed July demo edition where 50 winners were awarded fully funded accounts totaling over $2,000,000 in buying power.",
+      "prize_pool": 150000,
+      "currency": "USD",
+      "market_type": "demo",
+      "entry_fee": 0,
+      "entry_requirements": "Free registration.",
+      "start_date": "2026-07-01T00:00:00Z",
+      "end_date": "2026-07-31T23:59:59Z",
+      "country_eligibility": [
+        "Global"
+      ],
+      "format": "online",
+      "team_type": "solo",
+      "official_url": "https://ftmo.com/july-winners",
+      "featured": false,
+      "legitimacy_score": 97,
+      "evaluation_metric": "Maximum profit under 5% daily / 10% max DD",
+      "rules_summary": [
+        "Demo account rules applied."
+      ],
+      "prize_breakdown": [
+        {
+          "rank": "1st Place",
+          "reward": "$200,000 FTMO Account + $3,000 Cash",
+          "value": 25000
+        }
+      ],
+      "is_beginner_friendly": true,
+      "participant_count": 28400,
+      "created_at": "2026-06-20T10:00:00Z"
+    },
+    {
+      "id": "comp-binance-midyear-clash-past",
+      "title": "Binance Futures Mid-Year Trophy 2026 (Ended)",
+      "slug": "binance-futures-midyear-trophy-past",
+      "platform_id": "plt-binance",
+      "description": "Concluded futures trophy battle highlighting high-frequency algorithmic teams across Europe and Asia.",
+      "prize_pool": 2000000,
+      "currency": "USDT",
+      "market_type": "futures",
+      "entry_fee": null,
+      "entry_requirements": "Live futures trading account.",
+      "start_date": "2026-06-01T00:00:00Z",
+      "end_date": "2026-06-28T23:59:59Z",
+      "country_eligibility": [
+        "Global"
+      ],
+      "format": "online",
+      "team_type": "team",
+      "official_url": "https://www.binance.com/midyear-trophy",
+      "featured": false,
+      "legitimacy_score": 99,
+      "evaluation_metric": "Team Average PnL %",
+      "rules_summary": [
+        "Standard futures team rules applied."
+      ],
+      "prize_breakdown": [
+        {
+          "rank": "1st Place Team",
+          "reward": "500,000 USDT",
+          "value": 500000
+        }
+      ],
+      "is_beginner_friendly": false,
+      "participant_count": 39500,
+      "created_at": "2026-05-15T10:00:00Z"
+    }
+  ],
+  "submissions": [
+    {
+      "submitted_by": "Quant Cup Lead",
+      "contact_email": "quant@championship.org",
+      "competition_data": {
+        "platform_name": "Interactive Brokers",
+        "platform_type": "broker",
+        "platform_website": "https://interactivebrokers.com",
+        "title": "Global Quant Algorithmic Cup",
+        "prize_pool": 500000,
+        "currency": "USD",
+        "market_type": "stocks",
+        "start_date": "2026-09-06T05:30:03.816Z",
+        "end_date": "2026-10-06T05:30:03.817Z",
+        "official_url": "https://interactivebrokers.com/quant-cup"
+      },
+      "ai_quality_note": "QUALITY_SCORE: [5/5]\nFLAGS: [none]\nNOTE: [Clean listing from recognized platform with transparent rules and realistic prize structure.]",
+      "id": "sub-1788672603829",
+      "status": "pending",
+      "submitted_at": "2026-09-06T05:30:03.829Z"
+    },
+    {
+      "submitted_by": "Apex Partner Desk",
+      "contact_email": "desk@apextrader.com",
+      "competition_data": {
+        "platform_name": "Apex Trader Funding",
+        "platform_type": "prop_firm",
+        "platform_website": "https://apextraderfunding.com",
+        "title": "Apex Futures Blitz Championship",
+        "description": "End-to-end verified tournament test.",
+        "prize_pool": 300000,
+        "currency": "USD",
+        "market_type": "futures",
+        "entry_fee": 50,
+        "start_date": "2026-09-06T05:15:24.528Z",
+        "end_date": "2026-09-16T05:15:24.530Z",
+        "country_eligibility": [
+          "Global"
+        ],
+        "format": "online",
+        "team_type": "solo",
+        "official_url": "https://apextraderfunding.com/blitz"
+      },
+      "id": "sub-1788671724572",
+      "status": "approved",
+      "submitted_at": "2026-09-06T05:15:24.572Z"
+    },
+    {
+      "id": "sub-1",
+      "submitted_by": "Alex Morgan (Apex Trader Rep)",
+      "contact_email": "partners@apextraderfunding.com",
+      "competition_data": {
+        "platform_name": "Apex Trader Funding",
+        "platform_type": "prop_firm",
+        "platform_website": "https://apextraderfunding.com",
+        "title": "Apex Micro-Futures Blitz (October)",
+        "description": "Micro-contracts only fast scalping tournament with $250k prize pool.",
+        "prize_pool": 250000,
+        "currency": "USD",
+        "market_type": "futures",
+        "entry_fee": 30,
+        "entry_requirements": "Valid Apex tournament account.",
+        "start_date": "2026-10-10T13:30:00Z",
+        "end_date": "2026-10-25T20:00:00Z",
+        "country_eligibility": [
+          "Global",
+          "USA",
+          "UK",
+          "EU",
+          "India"
+        ],
+        "format": "online",
+        "team_type": "solo",
+        "official_url": "https://apextraderfunding.com/micro-blitz",
+        "evaluation_metric": "Highest Micro Futures PnL"
+      },
+      "status": "pending",
+      "submitted_at": "2026-09-05T14:30:00Z"
+    },
+    {
+      "id": "sub-2",
+      "submitted_by": "Community Trader @CryptoRider",
+      "contact_email": "trader.alex@gmail.com",
+      "competition_data": {
+        "platform_name": "Bybit",
+        "platform_type": "exchange",
+        "platform_website": "https://www.bybit.com",
+        "title": "Solana Ecosystem Futures Derby",
+        "description": "Trade SOL and Solana-based perpetuals for a 150,000 USDT prize pool.",
+        "prize_pool": 150000,
+        "currency": "USDT",
+        "market_type": "crypto",
+        "entry_fee": null,
+        "entry_requirements": "Min 100 USDT balance.",
+        "start_date": "2026-09-22T00:00:00Z",
+        "end_date": "2026-10-05T23:59:59Z",
+        "country_eligibility": [
+          "Global"
+        ],
+        "format": "online",
+        "team_type": "solo",
+        "official_url": "https://www.bybit.com/sol-derby",
+        "evaluation_metric": "SOL Pairs ROI %"
+      },
+      "status": "pending",
+      "submitted_at": "2026-09-06T08:15:00Z"
+    }
+  ],
+  "results": [
+    {
+      "id": "res-bybit-summer-2026",
+      "competition_title": "Bybit Summer Apex Sprint 2026",
+      "platform_name": "Bybit",
+      "platform_id": "plt-bybit",
+      "end_date": "2026-07-28T23:59:59Z",
+      "market_type": "crypto",
+      "total_prize_paid": 2500000,
+      "currency": "USDT",
+      "winner_handle": "AlphaVortex_99",
+      "winner_country": "Japan",
+      "winner_roi": "+1,482.4%",
+      "winner_prize": "$600,000 USDT",
+      "participants": 48900,
+      "proof_url": "https://www.bybit.com/leaderboard/summer2026"
+    },
+    {
+      "id": "res-ftmo-july-2026",
+      "competition_title": "FTMO Summer Pro Challenge 2026",
+      "platform_name": "FTMO",
+      "platform_id": "plt-ftmo",
+      "end_date": "2026-07-31T23:59:59Z",
+      "market_type": "demo",
+      "total_prize_paid": 150000,
+      "currency": "USD",
+      "winner_handle": "LondonSniper_FX",
+      "winner_country": "United Kingdom",
+      "winner_roi": "+64.8%",
+      "winner_prize": "$200,000 Account + $3,000 Cash",
+      "participants": 28400,
+      "proof_url": "https://ftmo.com/hall-of-fame/july-2026"
+    },
+    {
+      "id": "res-binance-midyear-2026",
+      "competition_title": "Binance Futures Mid-Year Trophy 2026",
+      "platform_name": "Binance",
+      "platform_id": "plt-binance",
+      "end_date": "2026-06-28T23:59:59Z",
+      "market_type": "futures",
+      "total_prize_paid": 2000000,
+      "currency": "USDT",
+      "winner_handle": "Squad_QuantumFlow",
+      "winner_country": "Singapore",
+      "winner_roi": "+892.1%",
+      "winner_prize": "$500,000 USDT",
+      "participants": 39500,
+      "proof_url": "https://www.binance.com/futures-results"
+    },
+    {
+      "id": "res-icmarkets-spring-2026",
+      "competition_title": "IC Markets Global ECN Sprint Q2",
+      "platform_name": "IC Markets",
+      "platform_id": "plt-icmarkets",
+      "end_date": "2026-05-30T23:59:59Z",
+      "market_type": "forex",
+      "total_prize_paid": 400000,
+      "currency": "USD",
+      "winner_handle": "KowloonScalper",
+      "winner_country": "Hong Kong",
+      "winner_roi": "+318.5%",
+      "winner_prize": "$120,000 Cash",
+      "participants": 12100,
+      "proof_url": "https://www.icmarkets.com/winners-archive"
+    },
+    {
+      "id": "res-apex-spring-2026",
+      "competition_title": "Apex Trader CME Futures Showdown Q2",
+      "platform_name": "Apex Trader Funding",
+      "platform_id": "plt-apextrader",
+      "end_date": "2026-04-30T20:00:00Z",
+      "market_type": "futures",
+      "total_prize_paid": 500000,
+      "currency": "USD",
+      "winner_handle": "ChicagoTapeReader",
+      "winner_country": "United States",
+      "winner_roi": "+412.3%",
+      "winner_prize": "$150,000 Cash + Funded PA Accounts",
+      "participants": 15300,
+      "proof_url": "https://apextraderfunding.com/past-winners"
+    },
+    {
+      "id": "res-bitget-spring-2026",
+      "competition_title": "Bitget KCGI Spring Edition",
+      "platform_name": "Bitget",
+      "platform_id": "plt-bitget",
+      "end_date": "2026-03-31T23:59:59Z",
+      "market_type": "copy_trading",
+      "total_prize_paid": 3000000,
+      "currency": "USDT",
+      "winner_handle": "SatoshiSensei",
+      "winner_country": "South Korea",
+      "winner_roi": "+1,120.9%",
+      "winner_prize": "$450,000 USDT",
+      "participants": 36000,
+      "proof_url": "https://www.bitget.com/kcgi/archive"
+    }
+  ],
+  "hallOfFame": [
+    {
+      "id": "trader-1",
+      "handle": "AlphaVortex_99",
+      "name": "Kenji Takahashi",
+      "country": "Japan",
+      "country_code": "JP",
+      "avatar_url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+      "total_prize_money": 1850000,
+      "tournaments_won": 4,
+      "primary_market": "crypto",
+      "best_roi": "+1,482.4%",
+      "win_streak": 3,
+      "badges": [
+        "WSOT Solo Legend",
+        "Binance VIP 9",
+        "Prop Master"
+      ],
+      "recent_win": "Bybit Summer Apex Sprint 2026"
+    },
+    {
+      "id": "trader-2",
+      "handle": "LondonSniper_FX",
+      "name": "Oliver Thorne",
+      "country": "United Kingdom",
+      "country_code": "GB",
+      "avatar_url": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
+      "total_prize_money": 720000,
+      "tournaments_won": 5,
+      "primary_market": "forex",
+      "best_roi": "+380.2%",
+      "win_streak": 2,
+      "badges": [
+        "FTMO Hall of Fame",
+        "Low Drawdown Guru",
+        "IC Markets Cup Winner"
+      ],
+      "recent_win": "FTMO Summer Pro Challenge 2026"
+    },
+    {
+      "id": "trader-3",
+      "handle": "ChicagoTapeReader",
+      "name": "Marcus Vance",
+      "country": "United States",
+      "country_code": "US",
+      "avatar_url": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80",
+      "total_prize_money": 940000,
+      "tournaments_won": 3,
+      "primary_market": "futures",
+      "best_roi": "+540.0%",
+      "win_streak": 2,
+      "badges": [
+        "Apex Top Gun",
+        "CME OrderFlow Pro",
+        "NQ Scalper"
+      ],
+      "recent_win": "Apex Trader CME Futures Showdown Q2"
+    },
+    {
+      "id": "trader-4",
+      "handle": "SatoshiSensei",
+      "name": "Min-jun Park",
+      "country": "South Korea",
+      "country_code": "KR",
+      "avatar_url": "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=150&auto=format&fit=crop&q=80",
+      "total_prize_money": 1150000,
+      "tournaments_won": 4,
+      "primary_market": "copy_trading",
+      "best_roi": "+1,120.9%",
+      "win_streak": 4,
+      "badges": [
+        "Bitget KCGI MVP",
+        "Top Copy Master ($8M AUM)",
+        "Crypto Volatility Ace"
+      ],
+      "recent_win": "Bitget KCGI Spring Edition"
+    },
+    {
+      "id": "trader-5",
+      "handle": "KowloonScalper",
+      "name": "Wong Chun-Kit",
+      "country": "Hong Kong",
+      "country_code": "HK",
+      "avatar_url": "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=150&auto=format&fit=crop&q=80",
+      "total_prize_money": 680000,
+      "tournaments_won": 3,
+      "primary_market": "forex",
+      "best_roi": "+420.1%",
+      "win_streak": 1,
+      "badges": [
+        "Gold/XAUUSD Specialist",
+        "ASIC ECN Champion",
+        "Sharpe 4.2"
+      ],
+      "recent_win": "IC Markets Global ECN Sprint Q2"
+    },
+    {
+      "id": "trader-6",
+      "handle": "MumbaiBulls",
+      "name": "Aarav Mehta",
+      "country": "India",
+      "country_code": "IN",
+      "avatar_url": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&auto=format&fit=crop&q=80",
+      "total_prize_money": 530000,
+      "tournaments_won": 2,
+      "primary_market": "crypto",
+      "best_roi": "+812.5%",
+      "win_streak": 2,
+      "badges": [
+        "Asia Derivatives Leader",
+        "FundedNext Champion",
+        "Algorithmic Arbitrageur"
+      ],
+      "recent_win": "FundedNext Stellar Arena #2"
+    }
+  ],
+  "subscribers": []
+}
