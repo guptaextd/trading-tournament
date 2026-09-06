@@ -17,17 +17,35 @@ import {
   AlertCircle,
   RefreshCw,
   Trophy,
-  ArrowUpRight
+  ArrowUpRight,
+  Activity,
+  AlertTriangle,
+  Check,
+  X,
+  ShieldAlert,
+  Bot,
+  Play
 } from 'lucide-react';
-import { Competition, Submission, Platform, MarketType, TournamentFormat, TeamType } from '@/types';
+import { 
+  Competition, 
+  Submission, 
+  Platform, 
+  MarketType, 
+  TournamentFormat, 
+  TeamType,
+  ParticipantCountFlag
+} from '@/types';
 
 export default function AdminPage() {
-  const [activeTab, setActiveTab] = useState<'competitions' | 'submissions'>('submissions');
+  const [activeTab, setActiveTab] = useState<'competitions' | 'submissions' | 'monitoring'>('submissions');
   const [competitions, setCompetitions] = useState<Competition[]>([]);
   const [submissions, setSubmissions] = useState<Submission[]>([]);
   const [platforms, setPlatforms] = useState<Platform[]>([]);
+  const [flags, setFlags] = useState<ParticipantCountFlag[]>([]);
   const [loading, setLoading] = useState(true);
   const [actionLoading, setActionLoading] = useState<string | null>(null);
+  const [monitoringRunning, setMonitoringRunning] = useState(false);
+  const [batchSummary, setBatchSummary] = useState<any | null>(null);
 
   // New Competition Modal State
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -54,14 +72,16 @@ export default function AdminPage() {
   const loadAll = async () => {
     setLoading(true);
     try {
-      const [compRes, subRes, pltRes] = await Promise.all([
+      const [compRes, subRes, pltRes, flagsRes] = await Promise.all([
         fetch('/api/competitions').then(r => r.json()),
         fetch('/api/submissions').then(r => r.json()),
         fetch('/api/platforms').then(r => r.json()),
+        fetch('/api/monitoring/flags?all=true').then(r => r.json()).catch(() => ({ flags: [] }))
       ]);
       setCompetitions(compRes.items || []);
       setSubmissions(subRes || []);
       setPlatforms(pltRes || []);
+      setFlags(flagsRes.flags || []);
       if (pltRes && pltRes.length > 0 && !formPlatformId) {
         setFormPlatformId(pltRes[0].id);
       }
@@ -75,6 +95,49 @@ export default function AdminPage() {
   useEffect(() => {
     loadAll();
   }, []);
+
+  // Handle Resolving Anomaly Flag
+  const handleResolveFlag = async (flagId: string, applyCount: boolean) => {
+    setActionLoading(flagId);
+    try {
+      const res = await fetch('/api/monitoring/flags', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          flagId,
+          applyCount,
+          note: applyCount ? 'Manually verified and approved by admin' : 'Dismissed anomaly; kept previous count'
+        })
+      });
+      if (res.ok) {
+        await loadAll();
+      }
+    } catch (err) {
+      console.error('Failed to resolve flag:', err);
+    } finally {
+      setActionLoading(null);
+    }
+  };
+
+  // Handle Manual Batch Monitoring Trigger
+  const handleRunBatch = async (competitionId?: string) => {
+    setMonitoringRunning(true);
+    setBatchSummary(null);
+    try {
+      const res = await fetch('/api/monitoring/run', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ competitionId })
+      });
+      const data = await res.json();
+      setBatchSummary(data);
+      await loadAll();
+    } catch (err) {
+      console.error('Failed to run monitoring batch:', err);
+    } finally {
+      setMonitoringRunning(false);
+    }
+  };
 
   // Handle Approve Submission
   const handleApprove = async (submissionId: string) => {
@@ -336,6 +399,22 @@ export default function AdminPage() {
           >
             <span>All Directory Tournaments ({competitions.length})</span>
           </button>
+          <button
+            onClick={() => setActiveTab('monitoring')}
+            className={`flex items-center gap-2 pb-3 px-2 text-sm font-bold tracking-wide transition border-b-2 ${
+              activeTab === 'monitoring'
+                ? 'border-amber-500 text-amber-400'
+                : 'border-transparent text-slate-400 hover:text-slate-200'
+            }`}
+          >
+            <Bot className="h-4 w-4" />
+            <span>Participant Monitoring & Anomaly Queue</span>
+            {flags.filter(f => !f.resolved).length > 0 && (
+              <span className="rounded-full bg-amber-500/20 px-2 py-0.5 text-xs text-amber-300 font-mono border border-amber-500/30">
+                {flags.filter(f => !f.resolved).length} flagged
+              </span>
+            )}
+          </button>
         </div>
 
         {/* TAB 1: Submissions Moderation Queue */}
@@ -531,6 +610,279 @@ export default function AdminPage() {
                   ))}
                 </tbody>
               </table>
+            </div>
+          </div>
+        )}
+
+        {/* TAB 3: Participant Monitoring & Anomaly Review Queue */}
+        {activeTab === 'monitoring' && (
+          <div className="space-y-6">
+            {/* Control Bar & Policies */}
+            <div className="glass-card rounded-2xl border border-amber-500/20 bg-gradient-to-r from-amber-500/10 via-[#101424] to-transparent p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div>
+                <div className="flex items-center gap-2">
+                  <Bot className="h-5 w-5 text-amber-400" />
+                  <h2 className="text-base font-bold text-white uppercase tracking-wider">
+                    Agentic Participant Monitoring Pipeline
+                  </h2>
+                </div>
+                <p className="text-xs text-slate-400 mt-1 max-w-2xl leading-relaxed">
+                  Autonomously monitors official competition pages, extracts live registration counts via Claude, enforces strict honesty rules (never guesses), and routes suspicious spikes or drops to this queue.
+                </p>
+                <div className="flex flex-wrap items-center gap-2 mt-3 text-[10px] text-slate-300">
+                  <span className="rounded-md bg-white/5 border border-white/10 px-2 py-1">
+                    Live: <strong>45 min</strong>
+                  </span>
+                  <span className="rounded-md bg-white/5 border border-white/10 px-2 py-1">
+                    Upcoming: <strong>24h</strong>
+                  </span>
+                  <span className="rounded-md bg-white/5 border border-white/10 px-2 py-1">
+                    Ended: <strong>Stopped</strong>
+                  </span>
+                  <span className="rounded-md bg-white/5 border border-white/10 px-2 py-1">
+                    Politeness: <strong>2s Domain Throttle + Robots.txt</strong>
+                  </span>
+                </div>
+              </div>
+
+              <div className="flex-shrink-0 flex items-center gap-3">
+                <button
+                  onClick={() => handleRunBatch()}
+                  disabled={monitoringRunning}
+                  className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 px-5 py-2.5 text-xs font-bold text-white shadow-lg shadow-amber-500/20 hover:scale-[1.02] active:scale-[0.98] transition disabled:opacity-60"
+                >
+                  {monitoringRunning ? (
+                    <>
+                      <RefreshCw className="h-4 w-4 animate-spin" />
+                      <span>Scanning Pages...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Play className="h-4 w-4 fill-white" />
+                      <span>Run Due Checks Now</span>
+                    </>
+                  )}
+                </button>
+              </div>
+            </div>
+
+            {/* Batch Run Summary Result */}
+            {batchSummary && (
+              <div className="rounded-2xl border border-emerald-500/30 bg-emerald-950/20 p-5 animate-in fade-in duration-200">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-xs font-bold text-emerald-300 flex items-center gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+                    Monitoring Batch Completed ({new Date(batchSummary.completedAt).toLocaleTimeString()})
+                  </span>
+                  <button 
+                    onClick={() => setBatchSummary(null)}
+                    className="text-xs text-slate-400 hover:text-white"
+                  >
+                    ✕
+                  </button>
+                </div>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+                  <div className="p-3 rounded-xl bg-black/40 border border-white/5">
+                    <div className="text-[10px] text-slate-400 uppercase font-semibold">Total Scanned</div>
+                    <div className="text-xl font-bold text-white font-mono">{batchSummary.eligibleCount}</div>
+                  </div>
+                  <div className="p-3 rounded-xl bg-black/40 border border-white/5">
+                    <div className="text-[10px] text-emerald-400 uppercase font-semibold">Updated</div>
+                    <div className="text-xl font-bold text-emerald-400 font-mono">{batchSummary.updated}</div>
+                  </div>
+                  <div className="p-3 rounded-xl bg-black/40 border border-white/5">
+                    <div className="text-[10px] text-amber-400 uppercase font-semibold">Flagged (Review)</div>
+                    <div className="text-xl font-bold text-amber-400 font-mono">{batchSummary.flagged}</div>
+                  </div>
+                  <div className="p-3 rounded-xl bg-black/40 border border-white/5">
+                    <div className="text-[10px] text-slate-400 uppercase font-semibold">Skipped (Not Due)</div>
+                    <div className="text-xl font-bold text-slate-400 font-mono">{batchSummary.skipped}</div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* UNRESOLVED ANOMALY REVIEW QUEUE */}
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                    <AlertTriangle className="h-4 w-4 text-amber-400" />
+                    Anomaly Review Queue
+                  </h3>
+                  <p className="text-xs text-slate-400 mt-0.5">
+                    Catches counts that drop &gt;50% or jump &gt;20x before they ever reach the live site.
+                  </p>
+                </div>
+                <span className="text-xs font-mono font-semibold px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                  {flags.filter(f => !f.resolved).length} Unresolved
+                </span>
+              </div>
+
+              {flags.filter(f => !f.resolved).length === 0 ? (
+                <div className="p-8 rounded-2xl border border-white/10 bg-[#0f121e] text-center text-slate-400 space-y-2">
+                  <ShieldCheck className="h-8 w-8 text-emerald-400 mx-auto opacity-80" />
+                  <p className="text-sm font-medium text-slate-300">All participant counts verified</p>
+                  <p className="text-xs text-slate-500 max-w-md mx-auto">
+                    No suspicious spikes or drops detected in recent monitoring passes. Data on live cards is verified.
+                  </p>
+                </div>
+              ) : (
+                <div className="space-y-3">
+                  {flags.filter(f => !f.resolved).map(flag => {
+                    return (
+                      <div 
+                        key={flag.id}
+                        className="rounded-2xl border border-amber-500/30 bg-[#121626] p-5 shadow-xl space-y-4"
+                      >
+                        <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-white/5 pb-3">
+                          <div>
+                            <span className="text-xs font-bold text-amber-400 uppercase tracking-wide flex items-center gap-1.5">
+                              <ShieldAlert className="h-3.5 w-3.5 text-amber-400" />
+                              Anomaly Alert · {flag.competition_title || flag.competition_id}
+                            </span>
+                            <p className="text-xs text-slate-300 mt-1 font-medium">
+                              {flag.reason}
+                            </p>
+                          </div>
+                          <span className="text-[10px] text-slate-400 font-mono">
+                            Detected {new Date(flag.created_at).toLocaleString()}
+                          </span>
+                        </div>
+
+                        {/* Comparison Grid */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
+                          <div className="p-3 rounded-xl bg-black/40 border border-white/5">
+                            <span className="text-[10px] text-slate-400 uppercase font-semibold block mb-1">Previous Verified Count</span>
+                            <span className="text-base font-bold text-slate-200 font-mono">
+                              {flag.previous_count ? flag.previous_count.toLocaleString() : 'None (First Run)'}
+                            </span>
+                          </div>
+
+                          <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20">
+                            <span className="text-[10px] text-amber-400 uppercase font-semibold block mb-1">Extracted Attempt (Suspicious)</span>
+                            <span className="text-base font-bold text-amber-300 font-mono">
+                              {flag.attempted_count ? flag.attempted_count.toLocaleString() : 'N/A'}
+                            </span>
+                          </div>
+
+                          <div className="p-3 rounded-xl bg-black/40 border border-white/5 sm:col-span-2 lg:col-span-1">
+                            <span className="text-[10px] text-slate-400 uppercase font-semibold block mb-1">Extracted Source Text</span>
+                            <span className="text-[11px] text-slate-300 italic font-mono line-clamp-2">
+                              &ldquo;{(flag.raw_extraction as any)?.source_phrase || (flag.raw_extraction as any)?.source_text || 'No phrase quoted'}&rdquo;
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Agent Reasoning */}
+                        {(flag.raw_extraction as any)?.reasoning && (
+                          <div className="text-[11px] text-slate-400 bg-white/5 p-2.5 rounded-xl border border-white/5">
+                            <strong className="text-slate-300">Extraction Agent Notes:</strong> {(flag.raw_extraction as any).reasoning}
+                          </div>
+                        )}
+
+                        {/* Actions */}
+                        <div className="flex flex-wrap items-center justify-end gap-2 pt-2 border-t border-white/5">
+                          <button
+                            onClick={() => handleResolveFlag(flag.id, false)}
+                            disabled={actionLoading === flag.id}
+                            className="flex items-center gap-1.5 rounded-xl border border-slate-700 bg-slate-800/80 px-4 py-2 text-xs font-semibold text-slate-300 hover:bg-slate-700 transition"
+                          >
+                            <X className="h-3.5 w-3.5 text-red-400" />
+                            <span>Dismiss (Keep Previous Count)</span>
+                          </button>
+
+                          <button
+                            onClick={() => handleResolveFlag(flag.id, true)}
+                            disabled={actionLoading === flag.id}
+                            className="flex items-center gap-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 px-4 py-2 text-xs font-bold text-white shadow-md shadow-emerald-600/20 transition"
+                          >
+                            <Check className="h-3.5 w-3.5" />
+                            <span>Approve & Apply ({flag.attempted_count?.toLocaleString()})</span>
+                          </button>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+
+            {/* LIVE MONITORED COMPETITIONS TABLE */}
+            <div className="space-y-3 pt-4">
+              <div className="flex items-center justify-between">
+                <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                  <Activity className="h-4 w-4 text-emerald-400" />
+                  Monitored Tournaments Status ({competitions.length})
+                </h3>
+              </div>
+
+              <div className="overflow-x-auto rounded-2xl border border-white/10 bg-[#0f121e]">
+                <table className="w-full text-left text-xs text-slate-300">
+                  <thead className="border-b border-white/10 bg-white/5 text-[11px] font-bold uppercase text-slate-400">
+                    <tr>
+                      <th className="py-3 px-4">Tournament</th>
+                      <th className="py-3 px-4">Status</th>
+                      <th className="py-3 px-4">Current Public Count</th>
+                      <th className="py-3 px-4">Confidence</th>
+                      <th className="py-3 px-4">Last Checked</th>
+                      <th className="py-3 px-4 text-right">Quick Scan</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-white/5 font-medium">
+                    {competitions.map(comp => (
+                      <tr key={comp.id} className="hover:bg-white/5 transition">
+                        <td className="py-3 px-4">
+                          <Link href={`/competitions/${comp.id}`} className="font-bold text-white hover:text-orange-400 block line-clamp-1">
+                            {comp.title}
+                          </Link>
+                          <span className="text-[10px] text-slate-500 truncate block max-w-xs">
+                            {comp.participant_count_url || comp.official_url}
+                          </span>
+                        </td>
+                        <td className="py-3 px-4 capitalize">
+                          <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase ${
+                            comp.status === 'live' ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' :
+                            comp.status === 'upcoming' ? 'bg-violet-500/20 text-violet-400 border border-violet-500/30' :
+                            'bg-slate-800 text-slate-400'
+                          }`}>
+                            {comp.status}
+                          </span>
+                        </td>
+                        <td className="py-3 px-4 font-mono font-bold text-white">
+                          {comp.participant_count ? comp.participant_count.toLocaleString() : (
+                            <span className="text-slate-500 font-normal italic">Not publicly available</span>
+                          )}
+                        </td>
+                        <td className="py-3 px-4">
+                          <span className={`px-2 py-0.5 rounded text-[10px] font-mono uppercase ${
+                            comp.participant_count_confidence === 'high' ? 'bg-emerald-500/15 text-emerald-400' :
+                            comp.participant_count_confidence === 'medium' ? 'bg-amber-500/15 text-amber-400' :
+                            'bg-slate-800 text-slate-500'
+                          }`}>
+                            {comp.participant_count_confidence || 'unavailable'}
+                          </span>
+                        </td>
+                        <td className="py-3 px-4 text-[11px] text-slate-400">
+                          {comp.participant_count_checked_at 
+                            ? new Date(comp.participant_count_checked_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) 
+                            : 'Pending first pass'}
+                        </td>
+                        <td className="py-3 px-4 text-right">
+                          <button
+                            onClick={() => handleRunBatch(comp.id)}
+                            disabled={monitoringRunning}
+                            className="rounded-lg border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] font-semibold text-slate-300 hover:bg-white/10 hover:text-white transition disabled:opacity-50"
+                            title="Run single check now"
+                          >
+                            Check Now
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         )}

@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { Competition } from '@/types';
 import CountdownTimer from './CountdownTimer';
+import ParticipantBadge from './ParticipantBadge';
 
 interface CompetitionCardProps {
   competition?: Competition;
@@ -200,15 +201,21 @@ export default function CompetitionCard({ competition: initialComp, competitionI
               <Trophy className="h-3.5 w-3.5 text-amber-400" />
               Total Prize Pool
             </span>
-            {competition.participant_count && (
-              <span className="text-[10px] text-slate-400">
-                {competition.participant_count.toLocaleString()} Traders
-              </span>
-            )}
           </div>
           <div className="mt-1 text-2xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-orange-300 to-yellow-200 font-mono">
             {formatCurrency(competition.prize_pool, competition.currency)}
           </div>
+        </div>
+
+        {/* Live Participant Count Badge */}
+        <div className="mt-2.5 flex items-center justify-between">
+          <ParticipantBadge
+            count={competition.participant_count}
+            confidence={competition.participant_count_confidence}
+            checkedAt={competition.participant_count_checked_at}
+            sourceText={competition.participant_count_source_text}
+            className="w-full justify-center py-1.5"
+          />
         </div>
       </div>
 

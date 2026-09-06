@@ -63,7 +63,11 @@ export interface Competition {
   prize_breakdown: PrizeTier[];
   is_beginner_friendly?: boolean;
   created_at: string;
-  participant_count?: number;
+  participant_count?: number | null;
+  participant_count_source_text?: string | null;
+  participant_count_confidence?: 'high' | 'medium' | 'low' | 'unavailable';
+  participant_count_url?: string | null;
+  participant_count_checked_at?: string | null;
 }
 
 export interface Submission {
@@ -144,3 +148,47 @@ export interface PlatformFilterParams {
   verifiedOnly?: boolean;
   search?: string;
 }
+
+export type ParticipantConfidence = 'high' | 'medium' | 'low' | 'unavailable';
+
+export interface ParticipantCountHistory {
+  id: string;
+  competition_id: string;
+  count: number | null;
+  confidence: ParticipantConfidence;
+  checked_at: string;
+}
+
+export interface ParticipantCountFlag {
+  id: string;
+  competition_id: string;
+  competition_title?: string;
+  reason: string;
+  previous_count?: number | null;
+  attempted_count?: number | null;
+  raw_extraction: Record<string, unknown>;
+  resolved: boolean;
+  resolution_note?: string;
+  created_at: string;
+}
+
+export interface ExtractionResult {
+  found: boolean;
+  count?: number;
+  source_phrase?: string;
+  confidence: 'high' | 'medium' | 'low';
+  reasoning: string;
+  url: string;
+}
+
+export interface MonitoringRunResult {
+  competition_id: string;
+  competition_title: string;
+  status: 'updated' | 'flagged' | 'unavailable' | 'skipped' | 'error';
+  previous_count?: number | null;
+  new_count?: number | null;
+  confidence?: ParticipantConfidence;
+  source_phrase?: string;
+  reason?: string;
+}
+

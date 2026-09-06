@@ -8,7 +8,10 @@ import {
   TournamentResult, 
   AlertSubscriber,
   CompetitionFilterParams,
-  PlatformFilterParams
+  PlatformFilterParams,
+  ParticipantCountHistory,
+  ParticipantCountFlag,
+  ParticipantConfidence
 } from '@/types';
 import { initialPlatforms } from './data/platforms';
 import { initialCompetitions, computeStatus } from './data/competitions';
@@ -22,6 +25,8 @@ interface DatabaseData {
   results: TournamentResult[];
   hallOfFame: HallOfFameTrader[];
   subscribers: AlertSubscriber[];
+  participantCountHistory: ParticipantCountHistory[];
+  participantCountFlags: ParticipantCountFlag[];
 }
 
 const DATA_DIR = path.join(process.cwd(), '.data');
@@ -49,6 +54,9 @@ function loadDb(): DatabaseData {
     try {
       const raw = fs.readFileSync(DB_FILE, 'utf-8');
       memoryDb = JSON.parse(raw);
+      if (!memoryDb!.participantCountHistory) memoryDb!.participantCountHistory = [];
+      if (!memoryDb!.participantCountFlags) memoryDb!.participantCountFlags = [];
+      ensureSeedMonitoringData(memoryDb!);
       return memoryDb!;
     } catch {
       console.warn('Failed to parse db.json, falling back to seed data.');
@@ -119,11 +127,95 @@ function loadDb(): DatabaseData {
     submissions: initialSubmissions,
     results: [...initialResults],
     hallOfFame: [...initialHallOfFame],
-    subscribers: []
+    subscribers: [],
+    participantCountHistory: [],
+    participantCountFlags: []
   };
 
+  ensureSeedMonitoringData(memoryDb);
   saveDb(memoryDb);
   return memoryDb;
+}
+
+function ensureSeedMonitoringData(data: DatabaseData) {
+  // Update Bybit WSOT with rich participant metadata if not yet set
+  const wsot = data.competitions.find(c => c.id === 'comp-wsot-2026');
+  if (wsot && !wsot.participant_count_source_text) {
+    wsot.participant_count = 84210;
+    wsot.participant_count_source_text = '84,210 Traders Registered for WSOT 2026 Squad & Solo Divisions';
+    wsot.participant_count_confidence = 'high';
+    wsot.participant_count_url = 'https://www.bybit.com/wsot2026';
+    wsot.participant_count_checked_at = new Date(Date.now() - 12 * 60000).toISOString();
+  }
+
+  const binance = data.competitions.find(c => c.id === 'comp-binance-futures-grand-prix');
+  if (binance && !binance.participant_count_source_text) {
+    binance.participant_count = 42300;
+    binance.participant_count_source_text = '42,300 Participants Joined Grand Prix';
+    binance.participant_count_confidence = 'high';
+    binance.participant_count_url = 'https://www.binance.com/futures-grand-prix';
+    binance.participant_count_checked_at = new Date(Date.now() - 28 * 60000).toISOString();
+  }
+
+  const ftmo = data.competitions.find(c => c.id === 'comp-ftmo-free-sep');
+  if (ftmo && !ftmo.participant_count_source_text) {
+    ftmo.participant_count = 21430;
+    ftmo.participant_count_source_text = '21,430 Active Challengers Enrolled';
+    ftmo.participant_count_confidence = 'high';
+    ftmo.participant_count_url = 'https://ftmo.com/free-challenge';
+    ftmo.participant_count_checked_at = new Date(Date.now() - 45 * 60000).toISOString();
+  }
+
+  // Seed history if empty
+  if (data.participantCountHistory.length === 0) {
+    const now = Date.now();
+    const oneDay = 24 * 60 * 60 * 1000;
+    
+    // WSOT growth history over 5 days
+    data.participantCountHistory.push(
+      { id: 'hist-w1', competition_id: 'comp-wsot-2026', count: 68400, confidence: 'high', checked_at: new Date(now - 4 * oneDay).toISOString() },
+      { id: 'hist-w2', competition_id: 'comp-wsot-2026', count: 72150, confidence: 'high', checked_at: new Date(now - 3 * oneDay).toISOString() },
+      { id: 'hist-w3', competition_id: 'comp-wsot-2026', count: 76900, confidence: 'high', checked_at: new Date(now - 2 * oneDay).toISOString() },
+      { id: 'hist-w4', competition_id: 'comp-wsot-2026', count: 80850, confidence: 'high', checked_at: new Date(now - 1 * oneDay).toISOString() },
+      { id: 'hist-w5', competition_id: 'comp-wsot-2026', count: 84210, confidence: 'high', checked_at: new Date(now - 12 * 60000).toISOString() }
+    );
+
+    // FTMO growth history
+    data.participantCountHistory.push(
+      { id: 'hist-f1', competition_id: 'comp-ftmo-free-sep', count: 14200, confidence: 'high', checked_at: new Date(now - 3 * oneDay).toISOString() },
+      { id: 'hist-f2', competition_id: 'comp-ftmo-free-sep', count: 17850, confidence: 'high', checked_at: new Date(now - 2 * oneDay).toISOString() },
+      { id: 'hist-f3', competition_id: 'comp-ftmo-free-sep', count: 19600, confidence: 'high', checked_at: new Date(now - 1 * oneDay).toISOString() },
+      { id: 'hist-f4', competition_id: 'comp-ftmo-free-sep', count: 21430, confidence: 'high', checked_at: new Date(now - 45 * 60000).toISOString() }
+    );
+
+    // Binance history
+    data.participantCountHistory.push(
+      { id: 'hist-b1', competition_id: 'comp-binance-futures-grand-prix', count: 35100, confidence: 'high', checked_at: new Date(now - 2 * oneDay).toISOString() },
+      { id: 'hist-b2', competition_id: 'comp-binance-futures-grand-prix', count: 39400, confidence: 'high', checked_at: new Date(now - 1 * oneDay).toISOString() },
+      { id: 'hist-b3', competition_id: 'comp-binance-futures-grand-prix', count: 42300, confidence: 'high', checked_at: new Date(now - 28 * 60000).toISOString() }
+    );
+  }
+
+  // Seed 1 sample unresolved anomaly flag if none exist (for the admin review queue)
+  if (data.participantCountFlags.length === 0) {
+    data.participantCountFlags.push({
+      id: 'flag-demo-1',
+      competition_id: 'comp-binance-futures-grand-prix',
+      competition_title: 'Binance Futures Grand Prix: Autumn Nitro Cup',
+      reason: 'Suspicious jump: count jumped from 42,300 to 950,000 (22.4x spike). Likely captured total exchange user base instead of tournament registrations.',
+      previous_count: 42300,
+      attempted_count: 950000,
+      raw_extraction: {
+        found: true,
+        count: 950000,
+        source_phrase: 'Join over 950,000 Active Futures Traders on Binance',
+        confidence: 'low',
+        reasoning: 'Ambiguous phrase on footer banner: refers to platform-wide traders rather than Grand Prix registrations.'
+      },
+      resolved: false,
+      created_at: new Date(Date.now() - 35 * 60000).toISOString()
+    });
+  }
 }
 
 function saveDb(data: DatabaseData) {
@@ -466,5 +558,101 @@ export const db = {
     data.subscribers.push(newSubscriber);
     saveDb(data);
     return newSubscriber;
+  },
+
+  // Participant Monitoring Methods
+  updateCompetitionParticipant(
+    id: string, 
+    update: { 
+      count?: number | null; 
+      source_text?: string | null; 
+      confidence: ParticipantConfidence; 
+      url?: string | null; 
+      checked_at?: string 
+    }
+  ): Competition | null {
+    const data = loadDb();
+    const comp = data.competitions.find(c => c.id === id);
+    if (!comp) return null;
+
+    if (update.count !== undefined) comp.participant_count = update.count;
+    if (update.source_text !== undefined) comp.participant_count_source_text = update.source_text;
+    comp.participant_count_confidence = update.confidence;
+    if (update.url !== undefined) comp.participant_count_url = update.url;
+    comp.participant_count_checked_at = update.checked_at || new Date().toISOString();
+
+    saveDb(data);
+    return enrichCompetition(comp, data.platforms);
+  },
+
+  addParticipantHistory(item: Omit<ParticipantCountHistory, 'id'>): ParticipantCountHistory {
+    const data = loadDb();
+    const newHistory: ParticipantCountHistory = {
+      ...item,
+      id: `hist-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`,
+      checked_at: item.checked_at || new Date().toISOString()
+    };
+    data.participantCountHistory.push(newHistory);
+    saveDb(data);
+    return newHistory;
+  },
+
+  getParticipantHistory(competitionId: string, limit: number = 30): ParticipantCountHistory[] {
+    const data = loadDb();
+    return data.participantCountHistory
+      .filter(h => h.competition_id === competitionId)
+      .sort((a, b) => new Date(a.checked_at).getTime() - new Date(b.checked_at).getTime())
+      .slice(-limit);
+  },
+
+  addParticipantFlag(flag: Omit<ParticipantCountFlag, 'id' | 'created_at'>): ParticipantCountFlag {
+    const data = loadDb();
+    const newFlag: ParticipantCountFlag = {
+      ...flag,
+      id: `flag-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`,
+      created_at: new Date().toISOString()
+    };
+    data.participantCountFlags.unshift(newFlag);
+    saveDb(data);
+    return newFlag;
+  },
+
+  getParticipantFlags(unresolvedOnly: boolean = false): ParticipantCountFlag[] {
+    const data = loadDb();
+    let result = [...data.participantCountFlags];
+    if (unresolvedOnly) {
+      result = result.filter(f => !f.resolved);
+    }
+    return result.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+  },
+
+  resolveParticipantFlag(id: string, resolutionNote?: string, applyCount: boolean = false): boolean {
+    const data = loadDb();
+    const flag = data.participantCountFlags.find(f => f.id === id);
+    if (!flag) return false;
+
+    flag.resolved = true;
+    if (resolutionNote) flag.resolution_note = resolutionNote;
+
+    if (applyCount && flag.attempted_count !== undefined && flag.attempted_count !== null) {
+      const comp = data.competitions.find(c => c.id === flag.competition_id);
+      if (comp) {
+        comp.participant_count = flag.attempted_count;
+        comp.participant_count_confidence = 'medium';
+        comp.participant_count_checked_at = new Date().toISOString();
+        
+        // Add to history as well
+        data.participantCountHistory.push({
+          id: `hist-${Date.now()}-approved`,
+          competition_id: flag.competition_id,
+          count: flag.attempted_count,
+          confidence: 'medium',
+          checked_at: new Date().toISOString()
+        });
+      }
+    }
+
+    saveDb(data);
+    return true;
   }
 };

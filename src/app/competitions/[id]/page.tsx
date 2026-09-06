@@ -22,6 +22,8 @@ import {
 import { db } from '@/lib/db';
 import CountdownTimer from '@/components/CountdownTimer';
 import CompetitionCard from '@/components/CompetitionCard';
+import ParticipantBadge from '@/components/ParticipantBadge';
+import RegistrationHistoryChart from '@/components/RegistrationHistoryChart';
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -59,6 +61,7 @@ export default async function CompetitionDetailPage({ params }: Props) {
 
   const { competition, related } = result;
   const platform = competition.platform;
+  const history = db.getParticipantHistory(id);
 
   const isLive = competition.status === 'live';
   const isUpcoming = competition.status === 'upcoming';
@@ -198,11 +201,14 @@ export default async function CompetitionDetailPage({ params }: Props) {
                     {competition.entry_fee ? `$${competition.entry_fee}` : '100% Free'}
                   </strong>
                 </span>
-                {competition.participant_count && (
-                  <span className="rounded-lg bg-white/5 border border-white/10 px-3 py-1 text-slate-300">
-                    Traders: <strong className="text-white">{competition.participant_count.toLocaleString()}</strong>
-                  </span>
-                )}
+                <div className="pt-0.5 sm:pt-0">
+                  <ParticipantBadge
+                    count={competition.participant_count}
+                    confidence={competition.participant_count_confidence}
+                    checkedAt={competition.participant_count_checked_at}
+                    sourceText={competition.participant_count_source_text}
+                  />
+                </div>
               </div>
             </div>
 
@@ -218,25 +224,27 @@ export default async function CompetitionDetailPage({ params }: Props) {
                 </div>
               </div>
 
-              {/* Countdown */}
-              <div className="rounded-xl border border-white/10 bg-black/40 p-3">
-                <CountdownTimer 
-                  startDate={competition.start_date}
-                  endDate={competition.end_date}
-                  status={competition.status}
-                />
-              </div>
+              {/* Action Buttons */}
+              <div className="space-y-2">
+                <a
+                  href={competition.official_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 py-3 px-4 text-sm font-bold text-white shadow-lg shadow-orange-500/25 transition hover:brightness-110 active:scale-[0.98]"
+                >
+                  <span>Official Registration Page</span>
+                  <ExternalLink className="h-4 w-4" />
+                </a>
 
-              {/* Outbound Join Button */}
-              <a
-                href={competition.official_url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 py-3 px-5 text-sm font-bold text-white shadow-xl shadow-orange-500/25 hover:brightness-110 active:scale-[0.98] transition"
-              >
-                <span>Register on Official Platform</span>
-                <ArrowUpRight className="h-4 w-4" />
-              </a>
+                {/* Live Countdown in Card */}
+                <div className="pt-2">
+                  <CountdownTimer
+                    startDate={competition.start_date}
+                    endDate={competition.end_date}
+                    status={competition.status}
+                  />
+                </div>
+              </div>
 
               <p className="text-[10px] text-slate-500 leading-tight">
                 Outbound link to {platform?.name || 'host'}. AlphaArena is an independent aggregator.
@@ -249,6 +257,42 @@ export default async function CompetitionDetailPage({ params }: Props) {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main Column (2/3 width) */}
           <div className="lg:col-span-2 space-y-8">
+            {/* Live Participant Traction & Audited History Section */}
+            <div className="space-y-4">
+              <RegistrationHistoryChart 
+                history={history} 
+                competitionTitle={competition.title} 
+              />
+
+              {/* Quoted Proof Card & Verification Badge */}
+              <div className="p-4 rounded-xl border border-white/5 bg-[#0e111c] text-xs text-slate-300 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div className="space-y-1">
+                  <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
+                    <CheckCircle className="w-3.5 h-3.5 text-emerald-400" />
+                    Agentic Verification Source
+                  </div>
+                  {competition.participant_count_source_text ? (
+                    <div className="font-mono text-[11px] text-amber-300 bg-black/40 px-2.5 py-1.5 rounded-lg border border-white/5">
+                      &ldquo;{competition.participant_count_source_text}&rdquo;
+                    </div>
+                  ) : (
+                    <p className="text-slate-400 text-[11px]">
+                      No public counter displayed on official tournament page. Never fabricated.
+                    </p>
+                  )}
+                </div>
+
+                <div className="text-right flex-shrink-0 text-[10px] text-slate-400">
+                  <div>Confidence: <span className="text-white font-semibold capitalize">{competition.participant_count_confidence || 'unavailable'}</span></div>
+                  {competition.participant_count_checked_at && (
+                    <div className="mt-0.5 text-slate-500">
+                      Scanned {new Date(competition.participant_count_checked_at).toLocaleDateString()}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+
             {/* Rules Summary & Evaluation Metric */}
             <div className="glass-card rounded-2xl p-6 border border-white/10 space-y-4">
               <h2 className="text-lg font-bold text-white uppercase tracking-wider flex items-center gap-2">
